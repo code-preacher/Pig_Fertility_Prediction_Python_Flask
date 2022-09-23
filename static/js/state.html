@@ -1,0 +1,68 @@
+var Abia = ['Select item...', 'Aba North', 'Aba South', 'Arochukwu', 'Bende', 'Ikwuano', 'Isiala Ngwa North', 'Isiala Ngwa South', 'Isuikwuato', 'Obi Ngwa', 'Ohafia', 'Osisioma', 'Ugwunagbo', 'Ukwa East', 'Ukwa West', 'Umuahia North', 'muahia South', 'Umu Nneochi'];
+
+var Adamawa = ['Select item...', 'Demsa', 'Fufure', 'Ganye', 'Gayuk', 'Gombi', 'Grie', 'Hong', 'Jada', 'Larmurde', 'Madagali', 'Maiha', 'Mayo Belwa', 'Michika', 'Mubi North', 'Mubi South', 'Numan', 'Shelleng', 'Song', 'Toungo', 'Yola North', 'Yola South'];
+
+jQuery(window).on('load', function() {
+  $("#state").change(function() {
+    $("#lga").empty();
+    var state = $(this).val();
+    var lga = eval(state);
+    lga.forEach(function(element) {
+      console.log(element);
+      var o = new Option(element, element);
+      $("#lga").append(o);
+
+    });
+  })
+});
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<select name="state" id="state">
+    <option selected="selected">Select item...</option>
+    <option value='Abia'>Abia</option>
+    <option value='Adamawa'>Adamawa</option>
+</select>
+<select name="lga" id="lga">
+</select>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Populate City Dropdown Using jQuery Ajax</title>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("select.country").change(function(){
+        var selectedCountry = $(".country option:selected").val();
+        $.ajax({
+            type: "POST",
+            url: "process-request.php",
+            data: { country : selectedCountry } 
+        }).done(function(data){
+            $("#response").html(data);
+        });
+    });
+});
+</script>
+</head>
+<body>
+<form>
+    <table>
+        <tr>
+            <td>
+                <label>Country:</label>
+                <select class="country">
+                    <option>Select</option>
+                    <option value="usa">United States</option>
+                    <option value="india">India</option>
+                    <option value="uk">United Kingdom</option>
+                </select>
+            </td>
+            <td id="response">
+                <!--Response will be inserted here-->
+            </td>
+        </tr>
+    </table>
+</form>
+</body> 
+</html>

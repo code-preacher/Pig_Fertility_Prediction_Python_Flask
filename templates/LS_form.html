@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>Learning_style | Form</title>
+    <meta name="keywords" content="">
+	<meta name="description" content="">
+    <meta name="author" content="templatemo">
+    <!-- 
+	Medigo Template
+	http://www.templatemo.com/preview/templatemo_460_medigo
+    -->
+    <link href="{{ url_for('static', filename='css/elements.css') }}" rel="stylesheet">
+	<script src="{{ url_for('static', filename='js/my_js.js') }}"></script>
+	<!-- Google Fonts -->
+	<link href="http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700itali" rel="stylesheet">
+	<link href="http://fonts.googleapis.com/css?family=Raleway:400,900,800,700,500,200,100,600" rel="stylesheet">
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/bootstrap.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/misc.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/blue-scheme.css') }}">
+	
+
+	<!-- JavaScripts -->
+	<script src="{{ url_for('static', filename='js/jquery-1.10.2.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/jquery-migrate-1.2.1.min.js') }}"></script>
+
+	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+
+</head>
+<body>
+	<div class="responsive_menu">
+        <ul class="main_menu">
+            <li class="active"><a href="index">Home</a></li>
+				<li><a href="LS_form">Learning-Styles</a>
+				<li><a href="login">Login</a>
+				<li><a href="studentreg">Register</a></li>
+				<li><a href="contact">About</a></li>
+				<li><a href="contact">Contact</a></li>
+        </ul> <!-- /.main_menu -->
+    </div> <!-- /.responsive_menu -->
+
+	<header class="site-header clearfix">
+		<div class="container">
+
+			<div class="row">
+
+				<div class="col-md-12">
+
+					<div class="pull-left logo">
+						<a href="index">
+							<img src="{{ url_for('static', filename='images/B-logo.png') }}" alt="Medigo by templatemo">
+						</a>
+					</div>	<!-- /.logo -->
+
+					<div class="main-navigation pull-right">
+
+						<nav class="main-nav visible-md visible-lg">
+							<ul class="sf-menu">
+								<li class="active"><a href="index">Home</a></li>
+					            <li><a href="LS_form">Learning-Styles</a>
+					            <li><a href="login">Login</a>
+					            <li><a href="studentreg">Register</a></li>
+					            <li><a href="about">About</a></li>
+					            <li><a href="contact">Contact</a></li>
+							</ul> <!-- /.sf-menu -->
+						</nav> <!-- /.main-nav -->
+
+						<!-- This one in here is responsive menu for tablet and mobiles -->
+					    <div class="responsive-navigation visible-sm visible-xs">
+					        <a href="#nogo" class="menu-toggle-btn">
+					            <i class="fa fa-bars"></i>
+					        </a>
+					    </div> <!-- /responsive_navigation -->
+
+					</div> <!-- /.main-navigation -->
+
+				</div> <!-- /.col-md-12 -->
+
+			</div> <!-- /.row -->
+
+		</div> <!-- /.container -->
+	</header> <!-- /.site-header -->
+	<section id="LSIntro" class="parallax first-widget">
+	    <div class="parallax-overlay">
+		    <div class="container home-intro-content">
+		        <div class="row">
+		        	<div class="col-md-12">
+		      <!--   	{%if v%}
+		        		<p>
+							<h1 style="color: #fff;">V's {{v}}</h1>
+						</p>
+						{%endif%}
+						{%if a%}
+						<p>
+							<h1 style="color: #fff;">A's {{a}}</h1>
+						</p>
+						{%endif%}
+						{%if r%}
+						<p>
+							<h1 style="color: #fff;">R's {{r}}</h1>
+						</p>
+						{%endif%} -->
+		        		{%if message%}
+						<p>
+							<h1 style="color: #fff;">{{message}}</h1>
+						</p>
+						{%endif%}
+						{%if result%}
+						<p>
+							<h1 style="color: #fff;">Congratulations!<br> Your VAR Learning Preference is: {{result}}</h1>
+							<h5 style="color: #fff;">Refresh page to answer again</h5>
+						</p>
+						{%endif%}
+						{%if accuracy%}
+						<p>
+							<h1 style="color: #fff;">Accuracy: {{accuracy}}</h1>
+						</p>
+						{%endif%}
+		        		<h1 style="color: #fff;">Welcome to the VAR Questionaire <br>A guide to Learning style</h1>
+		        		<p>Want to know your learning preference? <br>Answer <button id="vq" onclick="vark_show()">This Questionaire</button>
+<!-- 		        		<br> Or click <button id="popup" onclick="div_show()">View L-Styles</button> to View Details. 
+ -->		        		</p>
+		        	</div> <!-- /.col-md-12 -->
+		        </div> <!-- /.row -->
+		    </div> <!-- /.container -->
+	    </div> <!-- /.parallax-overlay -->
+	</section> <!-- /#homeIntro -->
+<!-- questionaire Body Starts Here -->
+<div id="vark">
+<!-- Popup Div Starts Here -->
+<div id="vq">
+<!-- Contact Us Form -->
+<form id="form" method="POST" action="{{url_for('predict')}}" enctype="multipart/form-data">
+<img id="close" src="{{ url_for('static', filename='./images/Actions-window-close-icon.png') }}" onclick ="vark_hide()">
+<h2 style="color: #00a8d6;">VAR Questionaire</h2>
+<h5><b>INSTRUCTION:</b> Make sure you answer all (16) questions, read carefully and chose the option <br>that best suits your preference</h5>
+<hr>
+<p><b>1. When i am learning i:</b><br>
+<input id="" name="q1" type="radio" value="aural"><label>Like to talk things through</label><br>
+<input id="" name="q1" type="radio" value="visual"><label>See patterns in things</label><br>
+<input id="" name="q1" type="radio" value="read"><label>Read books, articles and handouts</label><br>
+</p>
+<p><b>2. Remember when you learned how to play a new computer or board game. You learned best by:</b><br>
+<input id="" name="q2" type="radio" value="aural"><label>listening to somebody explaining it and asking questions.</label><br>
+<input id="" name="q2" type="radio" value="read"><label>reading the instructions.</label><br>
+<input id="" name="q2" type="radio" value="visual"><label>clues from the diagrams in the instructions.</label><br>
+</p>
+<p><b>3. After reading a play you need to do a project. Would you prefer to:</b><br>
+<input id="" name="q3" type="radio" value="visual"><label>draw or sketch something that happened in the play?</label><br>
+<input id="" name="q3" type="radio" value="aural"><label>read a speech from the play?</label><br>
+<input id="" name="q3" type="radio" value="read"><label>write about the play?</label><br>
+</p>
+<p><b>4. You have to present your ideas to your class. You would:</b><br>
+<input id="" name="q4" type="radio" value="visual"><label>make diagrams or get graphs to help explain my ideas.</label><br>
+<input id="" name="q4" type="radio" value="read"><label>write out my speech and learn it by reading it again and again.</label><br>
+<input id="" name="q4" type="radio" value="aural"><label>write a few key words and say them again and again.</label><br>
+</p>
+<p><b>5. You have a problem with your knee. Would you prefer that the doctor:</b><br>
+<input id="" name="q5" type="radio" value="visual"><label>showed you a diagram of what was wrong.</label><br>
+<input id="" name="q5" type="radio" value="aural"><label>described to you what was wrong.</label><br>
+<input id="" name="q5" type="radio" value="read"><label>gave you an article or brochure that explained knee injuries.</label><br>
+</p>
+<p><b>6. I want to learn to do something new on a computer. I would:</b><br>
+<input id="" name="q6" type="radio" value="read"><label>read the written instructions that came with the program.</label><br>
+<input id="" name="q6" type="radio" value="aural"><label>talk with people who know about the program.</label><br>
+<input id="" name="q6" type="radio" value="visual"><label>follow the diagrams in a book.</label><br>
+</p>
+<p><b>7. You want some feedback about an event, competition or test. You would like to have feedback:</b><br>
+<input id="" name="q7" type="radio" value="read"><label>that used a written description or table of my results.</label><br>
+<input id="" name="q7" type="radio" value="visual"><label>that used graphs showing what I achieved.</label><br>
+<input id="" name="q7" type="radio" value="aural"><label>from somebody who discussed it with me.</label><br>
+</p>
+<p><b>8. You need to give directions to go to a house nearby. You would:</b><br>
+<input id="" name="q8" type="radio" value="read"><label>write down the directions as a list.</label><br>
+<input id="" name="q8" type="radio" value="aural"><label>tell them the directions.</label><br>
+<input id="" name="q8" type="radio" value="visual"><label>draw a map on a piece of paper or get a map online.</label><br>
+</p>
+<p><b>9. Do you prefer a teacher who likes to use:</b><br>
+<input id="" name="q9" type="radio" value="aural"><label>class discussions, online discussion, online chat and guest speakers.</label><br>
+<input id="" name="q9" type="radio" value="read"><label>a textbook and plenty of handouts.</label><br>
+<input id="" name="q9" type="radio" value="visual"><label>an overview diagram, charts, labelled diagrams and maps.</label><br>
+</p>
+<p><b>10. A website has a video showing how to make a special graph. There is a person speaking, some lists and words describing what to do and some diagrams. You would learn most from:</b><br>
+<input id="" name="q10" type="radio" value="aural"><label>listening.</label><br>
+<input id="" name="q10" type="radio" value="read"><label>reading the words.</label><br>
+<input id="" name="q10" type="radio" value="visual"><label>seeing the diagrams.</label><br>
+</p>
+<p><b>11. I like websites that have:</b><br>
+<input id="" name="q11" type="radio" value="read"><label>interesting information and articles in print.</label><br>
+<input id="" name="q11" type="radio" value="aural"><label>audio channels for music, chat and discussion.</label><br>
+<input id="" name="q11" type="radio" value="visual"><label>interesting design and visual effects.</label><br>
+</p>
+<p><b>12. You are learning to take photos with your new digital camera or mobile phone. You would like to have:</b><br>
+<input id="" name="q12" type="radio" value="visual"><label>diagrams showing the camera and how to use it.</label><br>
+<input id="" name="q12" type="radio" value="read"><label>clear written instructions with lists and bullet points.</label><br>
+<input id="" name="q12" type="radio" value="aural"><label>a chance to ask questions and talk about the camera’s features.</label><br>
+</p>
+<p><b>13. You want to plan a surprise party for a friend. You would:</b><br>
+<input id="" name="q13" type="radio" value="read"><label>make lists of what to do and what to buy for the party.</label><br>
+<input id="" name="q13" type="radio" value="aural"><label>talk about it on the phone or text others.</label><br>
+<input id="" name="q13" type="radio" value="visual"><label>draw a map and make a special design for the invitation.</label><br>
+</p>
+<p><b>14. You have been selected as a tutor or a leader for a holiday program. This is interesting for your friends. You would:</b><br>
+<input id="" name="q14" type="radio" value="aural"><label>describe the activities I will be doing in the program.</label><br>
+<input id="" name="q14" type="radio" value="read"><label>show them the list of activities in the program.</label><br>
+<input id="" name="q14" type="radio" value="visual"><label>show them the map of where it will be held and diagrams about it.</label><br>
+</p>
+<p><b>15. You are going to make something special for your family. You would:</b><br>
+<input id="" name="q15" type="radio" value="visual"><label>decide from pictures in magazines.</label><br>
+<input id="" name="q15" type="radio" value="read"><label>find written instructions to make it.</label><br>
+<input id="" name="q15" type="radio" value="aural"><label>talk it over with my friends.</label><br>
+</p>
+<p><b>16. You are about to buy a new digital camera or mobile phone. Other than price, what would most influence your decision?</b><br>
+<input id="" name="q16" type="radio" value="aural"><label>the salesperson telling me about it.</label><br>
+<input id="" name="q16" type="radio" value="visual"><label>it is the latest design and looks good.</label><br>
+<input id="" name="q16" type="radio" value="read"><label>reading the details about its features.</label><br>
+</p>
+<button type="submit" name="submit" class="reg-button">Submit</button>
+</form>
+</div>
+<!-- Popup Div Ends Here -->
+</div>
+<!-- Display Popup Button -->
+<!-- View style Body Starts Here -->
+<div id="abc">
+<!-- Popup Div Starts Here -->
+<div id="popupContact">
+<!-- Contact Us Form -->
+<form id="form" method="post" name="form">
+<img id="close" src="{{ url_for('static', filename='./images/Actions-window-close-icon.png') }}" onclick ="div_hide()">
+<h2 style="color: #00a8d6;">VARK Learning Style Table</h2>
+<hr>
+<table class="table table-bordered">
+	<thead>
+		<tr class="table-info">
+			<th>Learning Style</th>
+			<th>Description</th>
+			<th>ID</th>
+		</tr>
+	</thead>
+	<tbody>
+	{%for row in styles%}
+	<tr class="table-warning">
+			<td class="table-warning">{{row[1]}}</td>
+			<td class="table-danger">{{row[2]}}</td>
+			<td class="table-success">{{row[3]}}</td>
+	</tr>
+	{%endfor%}
+	</tbody>
+</table>
+</form>
+</div>
+<!-- Popup Div Ends Here -->
+</div>
+<!-- Display Popup Button -->
+<footer class="site-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<nav class="footer-nav clearfix">
+						<ul class="footer-menu">
+							<li class="active"><a href="index">Home</a></li>
+					        <li><a href="LS_form">Learning-Styles</a>
+					        <li><a href="login">Login</a>
+					        <li><a href="studentreg">Register</a></li>
+					        <li><a href="about">About</a></li>
+					        <li><a href="contact">Contact</a></li>
+						</ul> <!-- /.footer-menu -->
+					</nav> <!-- /.footer-nav -->
+				</div> <!-- /.col-md-12 -->
+			</div> <!-- /.row -->
+			<div class="row">
+				<div class="col-md-12">
+					<p class="copyright-text">Copyright &copy; 2020 BEL 
+                    | All Rights Reserved</p>
+				</div> <!-- /.col-md-12 -->
+			</div> <!-- /.row -->
+		</div> <!-- /.container -->
+	</footer> <!-- /.site-footer -->
+</body>
+<!-- Body Ends Here -->
+</html>

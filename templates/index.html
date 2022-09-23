@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>AN ADAPTIVE NEURO-FUZZY SYSTEM FOR CLASSIFICATION OF SEMEN IN FARM ANIMAL (A CASE STUDY OF MALE PIG(BOAR)) | Prediction</title>
+    <meta name="keywords" content="">
+	<meta name="description" content="">
+    <meta name="author" content="templatemo">
+    <!-- 
+	Medigo Template
+	http://www.templatemo.com/preview/templatemo_460_medigo
+    -->
+    <!-- PBS LearningMedia (https://www.pbslearningmedia.ord) -->
+	<!-- Google Fonts -->
+	<link href="http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700itali" rel="stylesheet">
+	<link href="http://fonts.googleapis.com/css?family=Raleway:400,900,800,700,500,200,100,600" rel="stylesheet">
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/bootstrap.css') }}">
+<!-- 	<link rel="stylesheet" href="{{ url_for('static', filename='css/misc.css') }}">
+ -->	<link rel="stylesheet" href="{{ url_for('static', filename='css/blue-scheme.css') }}">
+	
+	<!-- JavaScripts -->
+	<script src="{{ url_for('static', filename='js/jquery-1.10.2.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/jquery-migrate-1.2.1.min.js') }}"></script>
+
+	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+
+</head>
+<body>
+	<header class="site-header clearfix">
+		<div class="container">
+
+			<div class="row">
+
+				<div class="col-md-12">
+
+					<div class="pull-left logo">
+						<a href="#">AN ADAPTIVE NEURO-FUZZY SYSTEM FOR CLASSIFICATION OF SEMEN IN FARM ANIMAL (A CASE STUDY OF MALE PIG(BOAR))</a>
+					</div>	<!-- /.logo -->
+
+					<div class="main-navigation pull-right">
+
+						<nav class="main-nav visible-md visible-lg">
+							<ul class="sf-menu">
+								<li class="active"><a href="#">Home</a></li>
+					            <li><a href="#">About</a></li>
+					            <li><a href="#">Contact</a></li>
+							</ul> <!-- /.sf-menu -->
+						</nav> <!-- /.main-nav -->
+
+						<!-- This one in here is responsive menu for tablet and mobiles -->
+					    <div class="responsive-navigation visible-sm visible-xs">
+					        <a href="#nogo" class="menu-toggle-btn">
+					            <i class="fa fa-bars"></i>
+					        </a>
+					    </div> <!-- /responsive_navigation -->
+
+					</div> <!-- /.main-navigation -->
+
+				</div> <!-- /.col-md-12 -->
+
+			</div> <!-- /.row -->
+
+		</div> <!-- /.container -->
+	</header> <!-- /.site-header -->
+
+	<section id="homeIntro" class="parallax first-widget">
+	    <div class="parallax-overlay">
+		    <div class="container home-intro-content">
+		        <div class="row">
+		        	<div class="col-md-12">
+		        		<h2>Fertility Performance Predictor<br>We help you predict the fertility of a male pig semen!</h2>
+		        			{%if message%}
+								<p>
+									<h3 style="color: #FFFFFF;">{{message}}</h3>
+								</p>
+							{%endif%}
+							{%if result == 'negative'%}
+								<p>
+									<h2 style="color: #fff;"><br> Pig Fertility Status is: Low</h2>
+								</p>
+                                {%elif result == 'positive'%}
+                                <p>
+									<h2 style="color: #fff;"><br> Pig Fertility Status is: High</h2>
+								</p>
+
+							{%endif%}
+							{%if accuracy%}
+								<p>
+									<h1 style="color: #fff;">Prediction Accuracy: {{accuracy}}</h1>
+								</p>
+							{%endif%}
+		        		<p></p>
+		        		<form id="form" method="POST" action="{{url_for('predict')}}" enctype="multipart/form-data">
+		        			<select class="large-button white-color" name="seating">
+		        			<option value="">Duration of time spent seating</option>
+		        			<option value="1">Very Often</option>
+		        			<option value="0">Always Busy</option>
+		        		</select>
+		        		<select class="large-button white-color" name="feeding">
+		        			<option value="">Quantity of food taken</option>
+		        			<option value="1">Much Food</option>
+		        			<option value="0">Very Low</option>
+		        		</select>
+		        		<select class="large-button white-color" name="prowess">
+		        			<option value="">Sexual Prowess / Drive</option>
+		        			<option value="1">Very Active</option>
+		        			<option value="0">Very Low</option>
+		        		</select>
+		        		<select class="large-button white-color" name="contamination">
+		        			<option value="">Food Quality</option>
+		        			<option value="1">Hygienic and not contaminated always</option>
+		        			<option value="0">Average Quality</option>
+		        		</select>
+                            <br><br>
+		        		<select class="large-button white-color" name="temperature">
+		        			<option value="">Environmental Temperature</option>
+		        			<option value="1">Very Low</option>
+		        			<option value="0">Very High</option>
+		        		</select>
+		        		<select class="large-button white-color" name="water">
+		        			<option value="">Water Consumption</option>
+		        			<option value="1">Very High</option>
+		        			<option value="0">Very Low</option>
+		        		</select>
+		        		<select class="large-button white-color" name="age">
+		        			<option value="">Age</option>
+		        			<option value="1">12-18 Months to 3years</option>
+		        			<option value="0">Above 3years</option>
+		        		</select>
+
+		        		<p>
+		        		<button type="submit" class="reg-button">Predict Semen Fertility</button>
+						</p>
+		        		</form>
+		        	</div> <!-- /.col-md-12 -->
+		        </div> <!-- /.row -->
+		    </div> <!-- /.container -->
+	    </div> <!-- /.parallax-overlay -->
+	</section> <!-- /#homeIntro -->
+	<footer class="site-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<p class="copyright-text">Copyright &copy; 2021 AN ADAPTIVE NEURO-FUZZY SYSTEM FOR CLASSIFICATION OF SEMEN IN FARM ANIMAL (A CASE STUDY OF MALE PIG(BOAR))
+                    | All Rights Reserved</p>
+				</div> <!-- /.col-md-12 -->
+			</div> <!-- /.row -->
+		</div> <!-- /.container -->
+	</footer> <!-- /.site-footer -->
+
+	<!-- Scripts -->
+	<script src="{{ url_for('static', filename='js/min/plugins.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/min/medigo-custom.min.js') }}"></script>
+
+</body>
+</html>
